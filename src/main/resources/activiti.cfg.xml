@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+<!-- 第一个Bean 配置 ： JDBC的连接池 ,工作流引擎需要去连接我们的数据库，操作数据库来实现工作流   -->
+    <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+        <property name="jdbcUrl" value="jdbc:mysql://192.168.174.133:3306/activiti7"/>
+        <property name="jdbcDriver" value="com.mysql.jdbc.Driver"/>
+        <property name="jdbcUsername" value="root"/>
+        <property name="jdbcPassword" value="123456"/>
+<!--        这是一个非常有用的功能。当设置为 true 时，Activiti 引擎在启动时会自动检查数据库中是否存在它所需要的表。如果表不存在，它会自动为您创建这些表。这省去了手动执行 SQL 脚本的麻烦。-->
+        <property name="databaseSchemaUpdate" value="true"/>
+<!--        Activiti 有一个可以异步执行任务（比如定时器、后台作业）的“异步执行器”。这里设置为 false 表示禁用这个功能。-->
+        <property name="asyncExecutorActivate" value="false"/>
+        <!--
+        这部分用于配置邮件发送功能。
+        在业务流程中，Activiti 可以发送邮件通知（例如，“有一个审批任务需要您处理”）。这两行就是配置用来发送邮件的服务器地址和端口-->
+<!--        <property name="mailServerHost" value="mail.my-corp.com"/>-->
+<!--        <property name="mailServerPort" value="5025"/>-->
+    </bean>
+
+
+
+</beans>
