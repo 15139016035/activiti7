@@ -6,7 +6,7 @@
 
 <!-- 第一个Bean 配置 ： JDBC的连接池 ,工作流引擎需要去连接我们的数据库，操作数据库来实现工作流   -->
     <bean id="processEngineConfiguration" class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
-        <property name="jdbcUrl" value="jdbc:mysql://192.168.174.133:3306/activiti7"/>
+        <property name="jdbcUrl" value="jdbc:mysql://192.168.182.131:3306/activiti7"/>
         <property name="jdbcDriver" value="com.mysql.jdbc.Driver"/>
         <property name="jdbcUsername" value="root"/>
         <property name="jdbcPassword" value="123456"/>
