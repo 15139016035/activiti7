@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef">
+  <process id="my_delopy_listenner_one_id" name="my_delopy_listenner_one_name" isExecutable="true">
+    <startEvent id="sid-84ce6d32-cec6-49ea-8085-69272d8f0d25" name="开始"/>
+    <userTask id="sid-df0d631c-3f8f-4ffd-ab17-543f36e8a7d1" name="项目经理" activiti:assignee="张三">
+      <extensionElements>
+        <!-- 任务创建时触发 -->
+        <activiti:taskListener event="create" delegateExpression="${myTaskListener}"/>
+        <!-- 指派办理人时触发 -->
+        <activiti:taskListener event="assignment" delegateExpression="${myTaskListener}"/>
+        <!-- 任务完成时触发 -->
+        <activiti:taskListener event="complete" delegateExpression="${myTaskListener}"/>
+        <!-- 任务删除时触发 -->
+        <activiti:taskListener event="delete" delegateExpression="${myTaskListener}"/>
+      </extensionElements>
+    </userTask>
+    <endEvent id="sid-8d1f3973-9724-41b0-b8b8-eff192bed843" name="结束"/>
+    <sequenceFlow id="sid-b2fc8216-7345-4d42-8b68-ba5f3a63b8f9" sourceRef="sid-84ce6d32-cec6-49ea-8085-69272d8f0d25" targetRef="sid-df0d631c-3f8f-4ffd-ab17-543f36e8a7d1"/>
+    <sequenceFlow id="sid-ef1c7e3d-0993-4d34-9e9a-4f03df3a69ac" sourceRef="sid-df0d631c-3f8f-4ffd-ab17-543f36e8a7d1" targetRef="sid-8d1f3973-9724-41b0-b8b8-eff192bed843"/>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_my_listenner">
+    <bpmndi:BPMNPlane bpmnElement="my_delopy_listenner_one_id" id="BPMNPlane_my_listenner">
+      <bpmndi:BPMNShape id="shape-5dcaf262-cf7c-44a1-8abf-a8ce3a6473c0" bpmnElement="sid-84ce6d32-cec6-49ea-8085-69272d8f0d25">
+        <omgdc:Bounds x="-253.0" y="-37.5" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-d91bb40e-3186-411c-b143-807f36be0856" bpmnElement="sid-df0d631c-3f8f-4ffd-ab17-543f36e8a7d1">
+        <omgdc:Bounds x="-158.5" y="-53.5" width="100.0" height="80.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape-96f55b86-8805-4d9e-a646-417edb4efbeb" bpmnElement="sid-8d1f3973-9724-41b0-b8b8-eff192bed843">
+        <omgdc:Bounds x="35.5" y="-28.5" width="30.0" height="30.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="edge-cf80ac9d-78ba-431d-ad02-b7d83981cf79" bpmnElement="sid-b2fc8216-7345-4d42-8b68-ba5f3a63b8f9">
+        <omgdi:waypoint x="-223.0" y="-15.0"/>
+        <omgdi:waypoint x="-158.5" y="-13.5"/>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge-1acb50e8-5240-42b2-a5e4-f22ad2d68b72" bpmnElement="sid-ef1c7e3d-0993-4d34-9e9a-4f03df3a69ac">
+        <omgdi:waypoint x="-58.5" y="-13.5"/>
+        <omgdi:waypoint x="35.5" y="-13.5"/>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
